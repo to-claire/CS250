@@ -69,7 +69,7 @@ int main()
 	// 16 from the array into v2.
 	// One statement only.
 	cout << "help\n";
-	v2.assign(a[2], a[7]); 
+	v2.assign(*(a + 2), a[7]); 
 
 	// Call the function printVector to print v2.
 	printVector(v2);
