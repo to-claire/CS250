@@ -102,16 +102,16 @@ int main()
 
 	// Create a few maps using the different constructors shown in 
 	// the slides. 
-	map<int, string> map1;
-	map1[97] = "Jungkook";
-	//map1[95] = "Taehyung";
-	map1[93] = "Yoongi";
-	map1[92] = "Jin";
-	//map1[95] = "Jimin";
-	//map1[94] = "Hobi";
-	map1[94] = "Namjoon";
+	map<int, string> btsMap;
+	btsMap[97] = "Jungkook";
+	//btsMap[95] = "Taehyung";
+	btsMap[93] = "Yoongi";
+	btsMap[92] = "Jin";
+	//btsMap[95] = "Jimin";
+	//btsMap[94] = "Hobi";
+	btsMap[94] = "Namjoon";
 
-	multimap<int, string> map2 = {
+	multimap<int, string> txtMap = {
 		{99, "Yeonjun"},
 		{00, "Soobin"},
 		{01, "Beomgyu"},
@@ -121,29 +121,29 @@ int main()
 
 	// Use the following functions to manipulate the maps:
 	// pair<iterator,bool> insert (const value_type& val);
-	map1.insert(make_pair(95, "Jimin"));
+	txtMap.insert(make_pair(95, "Jimin"));
 
 	// void insert (InputIterator first, InputIterator last);
-
+	txtMap.insert(btsMap.begin(), btsMap.end());
 
 	// iterator  erase(const_iterator position);
-
+	txtMap.erase(txtMap.begin());
 
 	// size_type erase(const key_type& k);
-
+	txtMap.erase(01);
 
 	// iterator  erase(const_iterator first, const_iterator last);
-
+	btsMap.erase(++btsMap.begin(), btsMap.end());
 
 	// Print each map without creating a print function, but 
 	// by using a range-based loop.
-	for (auto elem : map1)
+	for (auto elem : btsMap)
 	{
 		cout << "(" << elem.first << ", " << elem.second << ")";
 	}
-	cout << '\n';
+	cout << '\n' << endl;
 
-	for (auto elem : map2)
+	for (auto elem : txtMap)
 	{
 		cout << "(" << elem.first << ", " << elem.second << ")";
 	}
