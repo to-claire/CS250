@@ -32,6 +32,8 @@ public:
 
 	void printForward() const;
 	void printReverse() const;
+
+	void createList();
 	
 	void clearList();
 	~DoublyList();
