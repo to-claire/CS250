@@ -1,2 +1,2 @@
-# cs250
+# CS250
 a repository for cs250 exercises and labs
