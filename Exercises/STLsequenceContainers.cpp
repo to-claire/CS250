@@ -7,6 +7,7 @@ using namespace std;
 
 void printVector(const vector<int>& aVector);
 void printList(const list<int>& aList);
+void printMyList(const list<string>& myList);
 
 int main()
 {
@@ -327,46 +328,106 @@ int main()
 	cout << "\n\n----------------------------------------------------";
 	cout << "\n  ***  OTHER FUNCTIONS  ***  \n\n";
 
+	list<string> biasList;
+	list<string> hipHopList = {"SCoops", "Wonwoo", "Mingyu", "Vernon"};
+	list<string> vocalList = {"Woozi", "Jeonghan", "Shua", "DK", "Seungkwan"};
+	list<string> performanceList = {"Hoshi", "Jun", "Minghao", "Dino"};
+
+	cout << "biasList: ";
+	printMyList(biasList);
+	cout << "hipHopList: ";
+	printMyList(hipHopList);
+	cout << "vocalList: ";
+	printMyList(vocalList);
+	cout << "performanceList: ";
+	printMyList(performanceList);
+	cout << '\n';
+
 	// list: void assign (size_type n, const value_type& val);
+	biasList.assign(5, "Jeonghan");
+	printMyList(biasList);
 
 	// vector: void assign (InputIterator first, InputIterator last);	
+	list<string>::iterator itrVocalList = vocalList.begin();
+	while (*(++itrVocalList) != "Seungkwan");
+
+	biasList.assign(++vocalList.begin(), itrVocalList);
+	printMyList(biasList);
 
 	// list: const_reference back() const;
 	// (Notice that this back function returns a reference.)
+	cout << vocalList.back() << '\n';
 
 	// list: void clear() noexcept;
+	// biasList.clear();
 
 	// list: bool empty() const noexcept;
+	biasList.empty(); // whats the difference?
+
+	printMyList(biasList);
 
 	// vector: const_reference front() const;
+	cout << performanceList.front() << '\n';
 
 	// list: iterator insert (const_iterator position, 
 	//                                const value_type& val);
 	// (Notice that the insert function returns an iterator.)
+	biasList.insert(biasList.end(), "Minghao");
+	printMyList(biasList);
 
 	// list: void pop_back();
+	biasList.pop_back();
+	printMyList(biasList);
 
 	// list: void pop_front();
+	biasList.pop_front();
+	printMyList(biasList);
 
 	// list: void push_front (const value_type& val);
+	biasList.push_front("Wonwoo");
+	printMyList(biasList);
 
 	// list: void remove (const value_type& val);
+	biasList.remove("Wonwoo");
+	printMyList(biasList);
 
 	// list: void reverse() noexcept;
+	performanceList.reverse();
+	printMyList(performanceList);
 
 	// list: void splice (const_iterator position, list& x);
+	// transfers all the elements of x into the container
+	biasList.splice(biasList.end(), vocalList);
+	printMyList(biasList);
 
 	// list: void splice (const_iterator position, list& x, 
 	//                                        const_iterator i);
+	// transfers only the element pointed by i from x into the container
+	biasList.splice(biasList.begin(), hipHopList, ++hipHopList.begin());
+	printMyList(biasList);
 	
 	// list: void splice (const_iterator position, list& x, 
 	//                const_iterator first, const_iterator last);
+	auto itrHipHopList = hipHopList.begin();
+	while (*(++itrHipHopList) != "Mingyu");
+	biasList.splice(biasList.end(), performanceList, hipHopList.begin(), itrHipHopList);
+	printMyList(biasList);
 
+	biasList.remove("Shua"); // removes all occurances
+	printMyList(biasList);
 
 	cout << "\n\n----------------------------------------------------";
 
 	cout  <<  endl;
 	return 0;
+}
+
+// Definition function printMyList
+void printMyList(const list<string>& myList)
+{
+	for (const auto& element : myList)
+		cout << element << " ";
+	cout << endl;
 }
 
 // Definition function printVector
