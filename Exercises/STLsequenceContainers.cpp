@@ -362,7 +362,7 @@ int main()
 	// biasList.clear();
 
 	// list: bool empty() const noexcept;
-	biasList.empty(); // whats the difference?
+	// biasList.empty();
 
 	printMyList(biasList);
 
