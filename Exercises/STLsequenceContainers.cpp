@@ -14,6 +14,9 @@ int main()
 	/***************************************************************
 			VECTORS
 	****************************************************************/
+	// Vector: Vector is a type of dynamic array that resizes automatically after insertion or deletion of elements. 
+	// The elements are placed in contiguous storage so they can be accessed and traversed using iterators. 
+	// Element is inserted at the end of the vector.
 	cout << "  ***  STL VECTOR CLASS  ***  \n\n";
 
 	// Use the default constructor to declare an integer vector v1.
@@ -68,8 +71,7 @@ int main()
 	// Use function assign to copy elements 12, 13, 14, 15, and 
 	// 16 from the array into v2.
 	// One statement only.
-	cout << "help\n";
-	v2.assign(*(a + 2), a[7]); 
+	v2.assign(begin(a) + 2, begin(a) + 7); 
 
 	// Call the function printVector to print v2.
 	printVector(v2);
@@ -121,20 +123,20 @@ int main()
 	// element of v4. Notice that the insert function returns 
 	// an iterator, but if we do not intend to use it, we can 
 	// ignore it.
-	cout << "how do i do this?\n";
+	iterVector4 = v4.insert(iterVector4, iterVector2, iterVector2 += 4);
 
 	// Call the function printVector to print v4.
-
+	printVector(v4);
 
 	// iterator insert (const_iterator position, 
 	//                   size_type n, const value_type& val);
 	// Use the function insert to insert three 0s at the end of v4.
 	// (Notice that the insert function returns an iterator, 
 	//  but if we do not intend to use it, we can ignore it.)
-
+	v4.insert(v4.end(), 3, 0);
 
 	// Call the function printVector to print v4.
-
+	printVector(v4);
 
 	// bool empty() const noexcept;
 	// const_reference back() const;
@@ -145,73 +147,82 @@ int main()
 	// function back to output the last element, 
 	// and function pop_back to remove elements.
 	// (Notice that the back function returns a reference.)
-
+	while (!v2.empty())
+	{
+		cout << v2.back() << ' ';
+		v2.pop_back();
+	}
 
 	// void resize (size_type n, const value_type& val);
 	// Use function resize to insert three times number
 	// 4 into v2.
-
+	v2.resize(3, 4);
 
 	// Call the function printVector to print v2.
-
+	printVector(v2);
 
 	// const_reference front() const;
 	// Use function front to output the first element in v4.
 	// (Notice that the front function returns a reference.)
-
+	cout << v4.front() << '\n';
 
 	// void swap (vector& x);
 	// Use function swap to swap v2 with v4.
-
+	v2.swap(v4);
 
 	// Call the function printVector to print v2.
-
+	printVector(v2);
 
 	// Create a new vector v5;
-
+	vector<int> v5;
 
 	// Use the overloaded assignment operator to copy all 
 	// the elements of v2 into v5.
-
+	v5 = v2;
 
 	// void resize (size_type n);
 	// size_type size() const noexcept;
 	// Delete the last element of v5 by using the 
 	// functions resize and size.
-
+	v5.resize(v5.size() - 1);
 
 	// Call the function printVector to print v5.
-
+	printVector(v5);
 
 	// Create an iterator iterVector5 to point to the 
 	// first element of v5.
-
-
-	// iterator erase (const_iterator position);
-	// Call the function erase to delete the first 
-	// element of the vector. (Notice that the insert function
-	// returns an iterator, but if we do not intend to use it, 
-	// we can ignore it.)
-
-
-	// Call the function printVector to print v5 again.
-
+	vector<int>::iterator iterVector5 = v5.begin();
 
 	// iterator erase (const_iterator position);
 	// Call the function erase to delete the first 
 	// element of the vector. (Notice that the insert function
 	// returns an iterator, but if we do not intend to use it, 
 	// we can ignore it.)
-
+	iterVector5 = v5.erase(iterVector5);
 
 	// Call the function printVector to print v5 again.
+	cout << "Actual: ";
+	printVector(v5);
+	cout << "Expected: 13 14 15 7 7\n";
 
+	// iterator erase (const_iterator position);
+	// Call the function erase to delete the first 
+	// element of the vector. (Notice that the insert function
+	// returns an iterator, but if we do not intend to use it, 
+	// we can ignore it.)
+	v5.erase(iterVector5);
+
+	// Call the function printVector to print v5 again.
+	cout << "Actual: ";
+	printVector(v5);
+	cout << "Expected: 14 15 7 7\n";
 
 	// Create a vector of integers named v6 containing 
 	// numbers from 100 to 105.
 	// Using the copy constructor, create a vector 
 	// named v7, a copy of v6.
-
+	vector<int> v6 = {100, 101, 102, 103, 104, 105};
+	vector<int> v7(v6);
 
 	// iterator erase (const_iterator position);
 	// iterator insert (const_iterator position, 
@@ -220,66 +231,93 @@ int main()
 	// in its place, by using an iterator.
 	// Note that the function erase returns an iterator 
 	// that can be used to insert 333 in the right position.
-
+	vector<int>::iterator iterVector7 = v7.begin();
+	while (*iterVector7 != 103)
+	{
+		++iterVector7;
+	}
+	v7.erase(iterVector7);
+	v7.insert(iterVector7, 333);
 
 	// Using a range-based FOR loop, print the elements of v7.
-
+	for (auto e : v7)
+	{
+		cout << e << ' ';
+	}
 
 	/***************************************************************
 			LISTS
 	****************************************************************/
-
+	// List: List is a double linked sequence with forward and backward traversal. 
+	// The time taken in the insertion and deletion in the beginning, end and middle is constant. 
+	// It has the non-contiguous memory and there is no pre-allocated memory.
 	cout << "\n\n----------------------------------------------------";
 	cout << "\n  ***  STL LIST CLASS  ***  \n\n";
 
 	// Use the default constructor to create three lists 
 	// of integers, intList1, intList2, and intList3.
-        
+    list<int> intList1,
+				intList2,
+				intList3;
 
 	// void push_back (const value_type& val);
 	// Use the function push_back to insert the following
 	// values in the first list: 23 58 58 58 36 15 15 93 98 58
-	
+	intList1.push_back(23);
+	intList1.push_back(58);
+	intList1.push_back(58);
+	intList1.push_back(58);
+	intList1.push_back(36);
+	intList1.push_back(15);
+	intList1.push_back(15);
+	intList1.push_back(93);
+	intList1.push_back(98);
+	intList1.push_back(58);
 
 	// Call function printList to print intList1.
-
+	printList(intList1);
 
 	// Using the overloaded assignment operator, 
 	// copy elements of intList1 into intList2.
-
+	intList2 = intList1;
 
 	// Call function printList to print intList2.
-
+	printList(intList2);
 
 	// void sort();
 	// Using function sort, sort all elements in the second list.
-
+	intList2.sort();
 
 	// Call function printList to print intList2.
-
+	printList(intList2);
 
 	// void unique();
 	// Using function unique, remove all consecutive 
 	// duplicates in the list.
-
+	intList2.unique();
 
 	// Call function printList to print intList2.
-
+	printList(intList2);
 			
 	// void push_back (const value_type& val);
 	//Insert the following elements in the third list:
 	//  13 23 25 136 198
-
+	intList3.push_back(13);
+	intList3.push_back(23);
+	intList3.push_back(25);
+	intList3.push_back(136);
+	intList3.push_back(198);
 
 	// Call function printList to print intList3.
-
+	printList(intList3);
 
 	// void merge (list& x);
 	// Add to the second list all elements of the third list.
 	// --> This is ONE statement only.
-
+	intList2.merge(intList3);
 
 	// Call function printList to print intList2.
+	printList(intList2);
 
 	/***************************************************************
 	*		Create statements using the functions below.	

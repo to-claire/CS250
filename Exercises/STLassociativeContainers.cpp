@@ -12,6 +12,11 @@ using namespace std;
 // what this means, search the Web.
 void printSet(const set<int>& l);
 
+// Lists store (keys); maps store Pair(key, value)
+// Both automotically sorted in assending, alphabetical order (by key)
+// Stored in non-contiguous memory
+// Searched by key using balanced binary search tree (efficient)
+
 int main()
 {
 	/**************************************************************
@@ -133,7 +138,7 @@ int main()
 	txtMap.erase(01);
 
 	// iterator  erase(const_iterator first, const_iterator last);
-	btsMap.erase(++btsMap.begin(), btsMap.end());
+	btsMap.erase(btsMap.begin(), btsMap.end());
 
 	// Print each map without creating a print function, but 
 	// by using a range-based loop.
