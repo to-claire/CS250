@@ -23,14 +23,15 @@ void DArray::rotate(int index)
    else
    {
       int rotateToFront = a[index];
+      int moveToBack = a[0];
       while (a[0] != rotateToFront)
       {
-         int moveToBack = a[0];
          for (int i = 0; i < numOfElements; ++i)
          {
             a[i] = a[i + 1];
          }
          a[numOfElements - 1] = moveToBack;
+         moveToBack = a[0];
       }
    }
 }
@@ -48,14 +49,15 @@ All parameters are valid (they do not exceed the number of elements in the array
 void DArray::rotateRange(int first, int middle, int last)
 {
    int middleValue = a[middle];
+   int moveToLast = a[first];
    while (a[first] != middleValue)
    {
-      int moveToLast = a[first];
       for (int i = first; i < last; ++i)
       {
          a[i] = a[i + 1];
       }
       a[last] = moveToLast;
+      moveToLast = a[first];
    }
 }
 
