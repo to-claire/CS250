@@ -29,8 +29,18 @@ public:
 	DoublyList() : first(nullptr), last(nullptr), count(0) {}
 
 	// member functions
-	
+	void insertBack(int newData);
+	void printForward() const;
+	void printReverse() const;
 	void clearList();
+
+	void deleteNode();
+	void swapSecondWithBeforeLast();
+	void swapLastCallingValueAndFirstParamValue(DoublyList& otherList);
+	void sumParamToEndCalling(const DoublyList& otherList);
+	void moveToEnd(int nodesToMove);
+	void deleteThird();
+	void deleteFourth();
 	~DoublyList();
 
 private:
