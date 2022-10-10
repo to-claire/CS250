@@ -36,6 +36,8 @@
         "string_view": "cpp",
         "tuple": "cpp",
         "typeinfo": "cpp",
-        "__config": "cpp"
+        "__config": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
     }
 }
