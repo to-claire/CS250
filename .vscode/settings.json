@@ -38,6 +38,9 @@
         "typeinfo": "cpp",
         "__config": "cpp",
         "queue": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "__split_buffer": "cpp",
+        "array": "cpp",
+        "deque": "cpp"
     }
 }
