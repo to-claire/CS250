@@ -27,26 +27,37 @@ void print(const vector<int>& suitors,
 
 int processSuitors(vector<int>& suitors, list<int>& eliminatedSuitors)
 {
-   vector<int>::iterator itr = suitors.begin() + 2;
-   int size = suitors.size();
-   while (size > 1)
+   int index = 0;
+   int numToRemove = suitors.size() - 1;
+   
+   // repeat until 1 remaining
+   for (int i = 0; i < numToRemove; ++i)
    {
-      if (itr < suitors.end())
+      // move index 2, move to front end reached
+      for (int j = 0; j < 2; ++j)
       {
-         eliminatedSuitors.push_back(*itr);
-         itr = suitors.erase(itr);
-         --size;
-         itr += 2;
+         if (suitors[index] == suitors[suitors.size() - 1])
+         {
+            index = 0;
+         }
+         else
+         {
+            ++index;
+         }
       }
-      else
+      
+      eliminatedSuitors.push_back(suitors[index]);
+      suitors.erase(suitors.begin() + index);
+      
+      // if last removed, move to front
+      if (index == suitors.size())
       {
-         itr = suitors.begin() + (2 - (suitors.end() - (itr - 2))); 
+         index = 0;
       }
    }
-   print(suitors, eliminatedSuitors, itr);
+   
    return suitors[0];
 }
-
 
 
 int main()
