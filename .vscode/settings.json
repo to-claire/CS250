@@ -41,6 +41,7 @@
         "stack": "cpp",
         "__split_buffer": "cpp",
         "array": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "__string": "cpp"
     }
 }

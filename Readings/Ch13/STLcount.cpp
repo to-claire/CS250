@@ -6,6 +6,7 @@
 #include <map>
 #include <algorithm>
 using namespace std;
+
 int main()
 {
     vector<int> aVector = { 1, 2, 6, 3, 2, 4, 2, 5, 2 };
@@ -53,7 +54,7 @@ int main()
     // If you need to find how many times 2 is repeated in a specific
     // range in the multimap, then you would need to create a loop and 
     // simply keep count. 
-    
+
     cout << "\n";
     return 0;
 }
