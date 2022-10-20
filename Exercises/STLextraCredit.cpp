@@ -116,7 +116,7 @@ void functionMultisetOne(multiset<int>& multisetOne)
 {
     multisetOne.insert(multisetOne.begin(), 
         *multisetOne.rbegin() / *multisetOne.begin());
-} // does rbegin work for vector, list and maps to grab last val too?
+}
 
 // (functionMapOne) -------------------------------------------
 // mapOne is: {2,6}{4,3}{5,22}{6,12}{7,4}{9,1}
