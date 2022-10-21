@@ -105,10 +105,10 @@ int main()
     // save the return value in an iterator to use later--you may declare the iterator using auto.
     // Print the vector. What do you see?
     auto itr6 = remove(v6.begin(), v6.end(), 2);
-    printVector(v6); 
-    // it cannot alter the size of an array or a container
+    // 1 3 4 5 6 7 2 6 7 
+    // std::remove cannot alter the size of an array or a container
     v6.resize(itr6 - v6.begin());
-    printVector(v6); 
+    // 1 3 4 5 6 7
 
     // Exercise 7
     // Implement the following:
