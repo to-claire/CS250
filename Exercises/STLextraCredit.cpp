@@ -46,7 +46,7 @@ void functionVectorTwo(vector<int>& vectorTwoA,
     vector<int>& vectorTwoB)
 {
     vectorTwoA.swap(vectorTwoB);
-} // why? second vector is empty
+} // incorrect
 
 // (functionVectorThree) --------------------------------------
 // vectorThree is: 2 14 3 67 8 75 
@@ -125,7 +125,7 @@ void functionMultisetOne(multiset<int>& multisetOne)
 void functionMapOne(map<int, int>& mapOne)
 {
     mapOne.erase(mapOne.begin()->second);
-} // where to find member variables?
+}
 
 // (functionMultimapOne) --------------------------------------
 // multimapA is empty.

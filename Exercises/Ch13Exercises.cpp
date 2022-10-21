@@ -93,9 +93,9 @@ int main()
     // save the return value in an iterator--you may declare the iterator using auto.
     auto itr5 = find(l5.begin(), l5.end(), 1);
     // If the element is found, use the function list::insert to insert 100 before 1.
-    if (itr5 != l5.end()) // why include if condition?
-    l5.insert(itr5, 100);
-    printList(l5);
+    if (itr5 != l5.end())
+        l5.insert(itr5, 100);
+    // printList(l5);
 
     // Exercise 6
     // Implement the following:
@@ -105,9 +105,9 @@ int main()
     // save the return value in an iterator to use later--you may declare the iterator using auto.
     // Print the vector. What do you see?
     auto itr6 = remove(v6.begin(), v6.end(), 2);
+    printVector(v6); 
     // it cannot alter the size of an array or a container
-    v6.resize(itr6 - v6.begin()); 
-    // how does resizing affect output
+    v6.resize(itr6 - v6.begin());
     printVector(v6); 
 
     // Exercise 7
@@ -119,8 +119,9 @@ int main()
     // Try and use both vector::erase and algorithm 
     // std::remove_if to delete all elements <= to 50 and resize the vector in one statement.
     v7.erase(remove_if(v7.begin(), v7.end(), lessOrEqualTo50), v7.end()); 
-    // how does the nested function work
-    printVector(v7);
+    // remove() returns past-the-end itr
+    // .erase() resizes by deleting from itr to end
+    // printVector(v7);
 
     // Exercise 8
     // Implement the following:
