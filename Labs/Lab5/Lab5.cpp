@@ -27,38 +27,28 @@ void print(const vector<int>& suitors,
 
 int processSuitors(vector<int>& suitors, list<int>& eliminatedSuitors)
 {
-   int index = 0;
-   int numToRemove = suitors.size() - 1;
-   
-   // repeat until 1 remaining
-   for (int i = 0; i < numToRemove; ++i)
+   int index = 0,
+      suitorCount = 1;
+   while (suitors.size() > 1)
    {
-      // move index 2, move to front end reached
-      for (int j = 0; j < 2; ++j)
+      if (suitorCount % 3 == 0)
       {
-         if (suitors[index] == suitors[suitors.size() - 1])
-         {
-            index = 0;
-         }
-         else
-         {
-            ++index;
-         }
+         eliminatedSuitors.push_back(suitors[index]);
+         suitors.erase(suitors.begin() + index);
+      }
+      else 
+      {
+         ++index;
       }
       
-      eliminatedSuitors.push_back(suitors[index]);
-      suitors.erase(suitors.begin() + index);
-      
-      // if last removed, move to front
       if (index == suitors.size())
       {
          index = 0;
       }
+      ++suitorCount;
    }
-   
    return suitors[0];
 }
-
 
 int main()
 {
