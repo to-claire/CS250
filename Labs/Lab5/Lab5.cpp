@@ -4,9 +4,8 @@
 
 using namespace std;
 
-void print(const vector<int>& suitors, 
-    const list<int>& eliminatedSuitors, 
-    const vector<int>::iterator& itr);
+void printSuitors(const vector<int>& suitors, 
+    const list<int>& eliminatedSuitors);
 
 // In an ancient land, the beautiful princess Eve had many suitors. 
 // She decided on the following procedure to determine which suitor she would marry. 
@@ -25,50 +24,67 @@ void print(const vector<int>& suitors,
 // 15      suitor 2 eliminated, continue counting from 5
 // suitor 5 eliminated, 1 is the lucky winner!
 
+// int processSuitors(vector<int>& suitors, list<int>& eliminatedSuitors)
+// {
+//    int index = 0, count = 1;
+//    while (suitors.size() > 1)
+//    {
+//       if (count % 3 == 0)
+//       {
+//          eliminatedSuitors.push_back(suitors[index]);
+//          suitors.erase(suitors.begin() + index);
+//       }
+//       else ++index;
+//       if (index == suitors.size()) index = 0;
+//       ++count;
+//    }
+//    return suitors[0];
+// }
+
 int processSuitors(vector<int>& suitors, list<int>& eliminatedSuitors)
 {
-   int index = 0,
-      suitorCount = 1;
+   int index = 2;
    while (suitors.size() > 1)
    {
-      if (suitorCount % 3 == 0)
-      {
-         eliminatedSuitors.push_back(suitors[index]);
-         suitors.erase(suitors.begin() + index);
-      }
-      else 
-      {
-         ++index;
-      }
-      
-      if (index == suitors.size())
-      {
-         index = 0;
-      }
-      ++suitorCount;
+      eliminatedSuitors.push_back(suitors[index]);
+      suitors.erase(suitors.begin() + index);
+      index = (index + 2) % suitors.size();
    }
    return suitors[0];
 }
 
 int main()
 {
-    vector<int> suitors = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<int> suitors = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
     list<int> eliminatedSuitors;
     processSuitors(suitors, eliminatedSuitors);
+    printSuitors(suitors, eliminatedSuitors);
     return 0;
 }
 
-void print(const vector<int>& suitors, const list<int>& eliminatedSuitors, const vector<int>::iterator& itr)
+void printSuitors(const vector<int>& suitors, const list<int>& eliminatedSuitors)
 {
-    cout << "Suitors: ";
+    cout << "suitors: ";
     for (const auto& e : suitors)
     {
 		cout << e << " ";
     }
-    cout << "\nEliminated: ";
+    cout << "\neliminatedSuitors: ";
     for (const auto& e : eliminatedSuitors)
     {
 		cout << e << " ";
     }
-    cout << "\nCurrent itr: " << *itr << endl;
+    cout << endl;
 }
+
+// Number of suitors: 6
+// Eliminated: 3 6 4 2 5 
+// To win the princess, the suitor should stand in position 1.
+
+// Number of suitors: 8
+// Eliminated: 3 6 1 5 2 8 4 
+// To win the princess, the suitor should stand in position 7.
+
+// Number of suitors: 12
+// Eliminated: 3 6 9 12 4 8 1 7 2 11 5 
+// To win the princess, the suitor should stand in position 10.
