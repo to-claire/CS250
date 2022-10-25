@@ -43,12 +43,12 @@ void printSuitors(const vector<int>& suitors,
 
 int processSuitors(vector<int>& suitors, list<int>& eliminatedSuitors)
 {
-   int index = 2;
+   int index = 0;
    while (suitors.size() > 1)
    {
+      index = (index + 2) % suitors.size();
       eliminatedSuitors.push_back(suitors[index]);
       suitors.erase(suitors.begin() + index);
-      index = (index + 2) % suitors.size();
    }
    return suitors[0];
 }
