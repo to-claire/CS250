@@ -3,6 +3,14 @@
 
 #include <iostream>
 #include <vector>
+#include <list>
+#include <set> // +multiset
+#include <map> // +multimap
+#include <stack>
+#include <queue>
+#include <algorithm>
+#include <utility>
+
 const int CAP = 50;
 
 class DArray
@@ -19,7 +27,9 @@ public:
 	int& operator[](int idx);
     
     // add functions
-    bool function1(const std::vector<int>&);
+    // bool function1(const std::vector<int>&);
+    bool function2(const std::list<int>& aList, std::set<int>& aSet, int elem);
+
 
 	~DArray( ); 
 

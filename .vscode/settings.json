@@ -67,6 +67,7 @@
         "system_error": "cpp",
         "variant": "cpp",
         "algorithm": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "__memory": "cpp"
     }
 }
